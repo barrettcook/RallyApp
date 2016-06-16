@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
 } from 'react-native';
 
 import getFeed from './api';
@@ -30,7 +31,12 @@ class Feed extends Component {
   render() {
     return (
       <View>
-        {this.state.events.map((event, i) => <Text key={i}>{event.name}</Text>)}
+        {this.state.events.map((event, i) => (
+          <View key={i}>
+            <Image source={{ uri: 'data:image/png;base64,'+event.image.preview}} style={{ height: 40, width: 40 }} />
+            <Text>{event.name}</Text>
+          </View>
+        ))}
       </View>
     );
   }
